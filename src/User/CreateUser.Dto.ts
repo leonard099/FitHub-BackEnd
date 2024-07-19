@@ -4,7 +4,7 @@ import {
   IsNumber,
   IsString,
   IsStrongPassword,
-} from 'class-validator';
+} from "class-validator";
 
 export class CreateUserDto {
   @IsNotEmpty()

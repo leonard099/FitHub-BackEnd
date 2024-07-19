@@ -1,6 +1,9 @@
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { UserRole } from "./User.enum";
 import { Comentarios } from "src/Comentario/Comentarios.entity";
+import { Suscripciones } from "src/Suscripciones/Suscripciones.entity";
+import { Rutina } from "src/Rutina/Rutina.entity";
+import { Plan } from "src/PlanDeEntranmiento/Plan.entity";
 @Entity({
     name:'users'
 })
@@ -23,15 +26,13 @@ export class Users {
     @Column({default:UserRole.USER})
     isAdmin:UserRole
 
-    @ManyToMany(()=>Rutina, rutina=> rutina.user)
+    @ManyToMany(()=>Rutina, rutina=> rutina.users)
     @JoinTable({name:'usuario-rutina'})
     rutina:Rutina[]
     
-
-    //Cambiar relacion de pagos por relacion de suscripcion
-    @ManyToMany(()=>Plan ,planes=>planes.user)
-    @JoinTable({name:'usuario-planes'})
-    planes:Planes[]
+    @OneToMany(()=>Suscripciones,suscripcion=>suscripcion.user)
+    @JoinColumn({name:'suscripciones'})
+    suscripciones:Suscripciones[]
 
     @OneToMany(()=>Rutina, rutina=> rutina.admin)
     @JoinTable({name:'admin-rutina'})
@@ -39,9 +40,9 @@ export class Users {
 
     @OneToMany(()=>Plan ,planes=>planes.admin)
     @JoinTable({name:'admin-planes'})
-    planesAdmin:Planes[]
+    planesAdmin:Plan[]
 
-    @OneToMany(()=>Comentarios, comentario = comentario.user)
+    @OneToMany(()=>Comentarios, comentario=>comentario.usario)
     @JoinColumn({name:'comentarios'})
     comentarios:Comentarios[]
 }

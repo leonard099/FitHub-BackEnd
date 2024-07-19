@@ -37,4 +37,3 @@ export class Plan {
   @OneToMany(() => Suscripciones, (suscripcion) => suscripcion.plan)
   suscripciones: Suscripciones[];
 }
-

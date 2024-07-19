@@ -13,7 +13,7 @@ export class UserService {
     return this.usersRepository.getUserById(id);
   }
 
-  createUser(user: CreateUserDto){
+  createUser(user: CreateUserDto) {
     return this.usersRepository.createUser(user);
   }
 

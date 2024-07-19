@@ -1,4 +1,5 @@
-import { BlobOptions } from "buffer";
+import { Comentarios } from "src/Comentario/Comentarios.entity";
+import { Ejercicio } from "src/Ejercicios/Ejercicios.entity";
 import { Users } from "src/User/User.entity";
 import { Column, CommonEvents, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -12,18 +13,18 @@ export class Rutina{
     @Column({type:'boolean', default:false})
     virificado:boolean
 
-    @OneToMany(()=>Ejercicios,ejercicio= ejercicio.rutina)
+    @OneToMany(()=>Ejercicio,ejercicio=>ejercicio.rutina)
     @JoinColumn({name:'ejercicios'})
-    ejercicios:Ejercicios[]
+    ejercicios:Ejercicio[]
 
-    @ManyToOne(()=>Users,user=user.rutinaAdmin)
+    @ManyToOne(()=>Users,user=>user.rutinaAdmin)
     @JoinColumn({name:'admin'})
     admin:Users
 
-    @ManyToMany(()=>Users,user=user.rutina)
+    @ManyToMany(()=>Users,user=>user.rutina)
     users:Users[]
 
-    @OneToMany(()=>Comentarios,cometario=comentario.rutina)
+    @OneToMany(()=>Comentarios,comentario=>comentario.rutina)
     @JoinColumn({name:'comentarios'})
     comentarios:Comentarios[]
 

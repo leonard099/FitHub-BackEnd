@@ -1,12 +1,9 @@
-import { Comentarios } from 'src/Comentario/Comentarios.entity';
-import { Ejercicio } from 'src/Ejercicios/Ejercicios.entity';
+import { BlobOptions } from 'buffer';
 import { Users } from 'src/User/User.entity';
 import {
   Column,
-  CommonEvents,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToMany,
   ManyToOne,
   OneToMany,

@@ -1,31 +1,39 @@
-import { Comentarios } from "src/Comentario/Comentarios.entity";
-import { Ejercicio } from "src/Ejercicios/Ejercicios.entity";
-import { Suscripciones } from "src/Suscripciones/Suscripciones.entity";
-import { Users } from "src/User/User.entity";
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Comentarios } from 'src/Comentario/Comentarios.entity';
+import { Ejercicio } from 'src/Ejercicios/Ejercicios.entity';
+import { Suscripciones } from 'src/Suscripciones/Suscripciones.entity';
+import { Users } from 'src/User/User.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-@Entity({name:'plan'})
-export class Plan{
-    @PrimaryGeneratedColumn('uuid')
-    id:string
+@Entity({ name: 'plan' })
+export class Plan {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column({type:'boolean', default:false})
-    virificado:boolean
+  @Column({ type: 'boolean', default: false })
+  virificado: boolean;
 
-    @Column({type:'boolean'})
+  @Column({ type: 'boolean' })
+  @OneToMany(() => Ejercicio, (ejercicio) => ejercicio.plan)
+  @JoinColumn({ name: 'ejercicios' })
+  ejercicios: Ejercicio[];
 
-    @OneToMany(()=>Ejercicio,ejercicio=>ejercicio.plan)
-    @JoinColumn({name:'ejercicios'})
-    ejercicios:Ejercicio[]
+  @ManyToOne(() => Users, (user) => user.planesAdmin)
+  @JoinColumn({ name: 'admin' })
+  admin: Users;
 
-    @ManyToOne(()=>Users,user=>user.planesAdmin)
-    @JoinColumn({name:'admin'})
-    admin:Users
+  @OneToMany(() => Comentarios, (comentarios) => comentarios.plan)
+  @JoinColumn({ name: 'comentarios' })
+  comentarios: Comentarios[];
 
-    @OneToMany(()=>Comentarios,comentarios=>comentarios.plan)
-    @JoinColumn({name:'comentarios'})
-    comentarios:Comentarios[]
-
-    @OneToMany(()=>Suscripciones, suscripcion=>suscripcion.plan)
-    suscripciones:Suscripciones[]
+  @OneToMany(() => Suscripciones, (suscripcion) => suscripcion.plan)
+  suscripciones: Suscripciones[];
 }

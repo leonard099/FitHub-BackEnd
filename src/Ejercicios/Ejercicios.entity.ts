@@ -1,6 +1,6 @@
-import { join } from "path";
-import { Plan } from "src/PlanDeEntranmiento/Plan.entity";
-import { Rutina } from "src/Rutina/Rutina.entity";
+import { join } from 'path';
+import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
+import { Rutina } from 'src/Rutina/Rutina.entity';
 import {
   Column,
   Entity,
@@ -8,32 +8,32 @@ import {
   ManyToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
-} from "typeorm";
+} from 'typeorm';
 
 @Entity({
-  name: "ejercicio",
+  name: 'ejercicio',
 })
 export class Ejercicio {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: "varchar", length: 50 })
+  @Column({ type: 'varchar', length: 50 })
   titulo: string;
 
-  @Column({ type: "varchar", length: 300 })
+  @Column({ type: 'varchar', length: 300 })
   desripcion: string;
 
   @Column({
     default:
-      "https://png.pngtree.com/png-clipart/20190630/original/pngtree-img-file-document-icon-png-image_4166554.jpg",
+      'https://png.pngtree.com/png-clipart/20190630/original/pngtree-img-file-document-icon-png-image_4166554.jpg',
   })
   imgUrl: string;
 
   @ManyToOne(() => Rutina, (rutina) => rutina.ejercicios, { nullable: true })
-  @JoinColumn({ name: "rutina" })
+  @JoinColumn({ name: 'rutina' })
   rutina: Rutina;
 
   @ManyToOne(() => Plan, (plan) => plan.ejercicios, { nullable: true })
-  @JoinColumn({ name: "plan" })
+  @JoinColumn({ name: 'plan' })
   plan: Rutina;
 }

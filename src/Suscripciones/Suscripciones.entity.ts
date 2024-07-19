@@ -1,5 +1,5 @@
-import { Plan } from "src/PlanDeEntranmiento/Plan.entity";
-import { Users } from "src/User/User.entity";
+import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
+import { Users } from 'src/User/User.entity';
 import {
   Entity,
   JoinColumn,
@@ -9,23 +9,23 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
 @Entity({
-  name: "suscripciones",
+  name: 'suscripciones',
 })
 export class Suscripciones {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @UpdateDateColumn()
   date: Date;
 
   @ManyToOne(() => Plan, (plan) => plan.suscripciones)
-  @JoinColumn({ name: "plan" })
+  @JoinColumn({ name: 'plan' })
   plan: Plan;
 
   @ManyToOne(() => Users, (user) => user.suscripciones)
-  @JoinColumn({ name: "usuario" })
+  @JoinColumn({ name: 'usuario' })
   user: Users;
 }

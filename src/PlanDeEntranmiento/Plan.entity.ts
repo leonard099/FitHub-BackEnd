@@ -1,7 +1,7 @@
-import { Comentarios } from "src/Comentario/Comentarios.entity";
-import { Ejercicio } from "src/Ejercicios/Ejercicios.entity";
-import { Suscripciones } from "src/Suscripciones/Suscripciones.entity";
-import { Users } from "src/User/User.entity";
+import { Comentarios } from 'src/Comentario/Comentarios.entity';
+import { Ejercicio } from 'src/Ejercicios/Ejercicios.entity';
+import { Suscripciones } from 'src/Suscripciones/Suscripciones.entity';
+import { Users } from 'src/User/User.entity';
 import {
   Column,
   Entity,
@@ -11,27 +11,27 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
+} from 'typeorm';
 
-@Entity({ name: "plan" })
+@Entity({ name: 'plan' })
 export class Plan {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: "boolean", default: false })
+  @Column({ type: 'boolean', default: false })
   virificado: boolean;
 
-  @Column({ type: "boolean" })
+  @Column({ type: 'boolean' })
   @OneToMany(() => Ejercicio, (ejercicio) => ejercicio.plan)
-  @JoinColumn({ name: "ejercicios" })
+  @JoinColumn({ name: 'ejercicios' })
   ejercicios: Ejercicio[];
 
   @ManyToOne(() => Users, (user) => user.planesAdmin)
-  @JoinColumn({ name: "admin" })
+  @JoinColumn({ name: 'admin' })
   admin: Users;
 
   @OneToMany(() => Comentarios, (comentarios) => comentarios.plan)
-  @JoinColumn({ name: "comentarios" })
+  @JoinColumn({ name: 'comentarios' })
   comentarios: Comentarios[];
 
   @OneToMany(() => Suscripciones, (suscripcion) => suscripcion.plan)

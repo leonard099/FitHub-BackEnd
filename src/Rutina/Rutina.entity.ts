@@ -1,4 +1,5 @@
-import { BlobOptions } from 'buffer';
+import { Comentarios } from 'src/Comentario/Comentarios.entity';
+import { Ejercicio } from 'src/Ejercicios/Ejercicios.entity';
 import { Users } from 'src/User/User.entity';
 import {
   Column,
@@ -9,6 +10,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { RutinaCategoria } from './Rutina.enum';
 
 @Entity({
   name: 'rutina',
@@ -18,7 +20,10 @@ export class Rutina {
   id: string;
 
   @Column({ type: 'boolean', default: false })
-  virificado: boolean;
+  verificado: boolean;
+
+  @Column({ type: 'varchar', length: 100 })
+  categoria:RutinaCategoria[];
 
   @OneToMany(() => Ejercicio, (ejercicio) => ejercicio.rutina)
   @JoinColumn({ name: 'ejercicios' })

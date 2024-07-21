@@ -12,6 +12,7 @@ import { Comentarios } from 'src/Comentario/Comentarios.entity';
 import { Suscripciones } from 'src/Suscripciones/Suscripciones.entity';
 import { Rutina } from 'src/Rutina/Rutina.entity';
 import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
+
 @Entity({
   name: 'users',
 })
@@ -34,6 +35,15 @@ export class Users {
   @Column({ default: UserRole.USER })
   isAdmin: UserRole;
 
+  @Column({ type: 'varchar', length: 100 })
+  pais: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  direccion: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  ciudad: string;
+
   @ManyToMany(() => Rutina, (rutina) => rutina.users)
   @JoinTable({ name: 'usuario-rutina' })
   rutina: Rutina[];
@@ -53,4 +63,6 @@ export class Users {
   @OneToMany(() => Comentarios, (comentario) => comentario.usario)
   @JoinColumn({ name: 'comentarios' })
   comentarios: Comentarios[];
+
+
 }

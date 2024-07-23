@@ -63,6 +63,4 @@ export class Users {
   @OneToMany(() => Comentarios, (comentario) => comentario.usario)
   @JoinColumn({ name: 'comentarios' })
   comentarios: Comentarios[];
-
-
 }

@@ -19,6 +19,12 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
   export class Users {
     @PrimaryGeneratedColumn('uuid')
     id: string;
+  @Entity({
+    name: 'users',
+  })
+  export class Users {
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column({ type: 'varchar', length: 100, nullable: false })
     name: string;
@@ -60,7 +66,9 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
     @JoinTable({ name: 'admin-planes' })
     planesAdmin: Plan[];
 
-  @OneToMany(() => Comentarios, (comentario) => comentario.usario)
-  @JoinColumn({ name: 'comentarios' })
-  comentarios: Comentarios[];
-}
+    @OneToMany(() => Comentarios, (comentario) => comentario.usario)
+    @JoinColumn({ name: 'comentarios' })
+    comentarios: Comentarios[];
+
+
+  }

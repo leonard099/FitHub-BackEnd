@@ -39,4 +39,7 @@ export class Rutina {
   @OneToMany(() => Comentarios, (comentario) => comentario.rutina)
   @JoinColumn({ name: 'comentarios' })
   comentarios: Comentarios[];
+
+  @Column({ default: true })
+  active: boolean;
 }

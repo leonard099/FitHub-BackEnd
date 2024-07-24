@@ -64,5 +64,6 @@ export class Users {
   @JoinColumn({ name: 'comentarios' })
   comentarios: Comentarios[];
 
-
+  @Column({ default: true })
+  active: boolean;
 }

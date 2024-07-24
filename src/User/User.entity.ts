@@ -13,12 +13,7 @@ import { Suscripciones } from 'src/Suscripciones/Suscripciones.entity';
 import { Rutina } from 'src/Rutina/Rutina.entity';
 import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
 
-  @Entity({
-    name: 'users',
-  })
-  export class Users {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  
   @Entity({
     name: 'users',
   })
@@ -69,9 +64,8 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
     @OneToMany(() => Comentarios, (comentario) => comentario.usario)
     @JoinColumn({ name: 'comentarios' })
     comentarios: Comentarios[];
-    
+
     @Column({ default: true })
     active: boolean;
     }
-
   }

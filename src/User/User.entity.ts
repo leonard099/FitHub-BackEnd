@@ -13,12 +13,7 @@ import { Suscripciones } from 'src/Suscripciones/Suscripciones.entity';
 import { Rutina } from 'src/Rutina/Rutina.entity';
 import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
 
-  @Entity({
-    name: 'users',
-  })
-  export class Users {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  
   @Entity({
     name: 'users',
   })
@@ -70,5 +65,6 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
     @JoinColumn({ name: 'comentarios' })
     comentarios: Comentarios[];
 
-
+    @Column({ type: 'varchar', length: 100 })
+    conflicto: string;
   }

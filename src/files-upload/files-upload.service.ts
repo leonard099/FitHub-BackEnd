@@ -18,13 +18,13 @@ export class FilesUploadService {
     if (!ejercicioImageUpload) {
       throw new NotFoundException('Ejercicio no encontrado');
     }
-    // const upLoadImage = await this.filesUploadRepository.uploadImage(file);
-    // if (!upLoadImage.secure_url) {
-    //   throw new NotFoundException('No se pudo cargar la imagen');
-    // }
-    // await this.ejerciciosRepository.update(ejercicioId, {
-    //   imgUrl: upLoadImage.secure_url,
-    // });
+    const upLoadImage = await this.filesUploadRepository.uploadImage(file);
+    if (!upLoadImage.secure_url) {
+      throw new NotFoundException('No se pudo cargar la imagen');
+    }
+    await this.ejerciciosRepository.update(ejercicioId, {
+      imgUrl: upLoadImage.secure_url,
+    });
 
     const updateEjercicio = await this.ejerciciosRepository.findOneBy({
       id: ejercicioId,
@@ -32,5 +32,6 @@ export class FilesUploadService {
     if (!updateEjercicio) {
       throw new NotFoundException('No se pudo actualizar la imagen');
     }
+    return updateEjercicio;
   }
 }

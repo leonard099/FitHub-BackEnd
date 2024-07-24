@@ -6,8 +6,6 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -19,7 +17,7 @@ export class Plan {
   id: string;
 
   @Column({ type: 'boolean', default: false })
-  virificado: boolean;
+  verificado: boolean;
 
   @Column({ type: 'boolean' })
   @OneToMany(() => Ejercicio, (ejercicio) => ejercicio.plan)
@@ -36,4 +34,7 @@ export class Plan {
 
   @OneToMany(() => Suscripciones, (suscripcion) => suscripcion.plan)
   suscripciones: Suscripciones[];
+
+  @Column({ default: true })
+  active: boolean;
 }

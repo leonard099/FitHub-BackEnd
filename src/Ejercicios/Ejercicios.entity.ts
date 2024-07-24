@@ -5,7 +5,6 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -36,4 +35,3 @@ export class Ejercicio {
   @JoinColumn({ name: 'plan' })
   plan: Rutina;
 }
-

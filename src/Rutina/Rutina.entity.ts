@@ -23,7 +23,7 @@ export class Rutina {
   verificado: boolean;
 
   @Column({ type: 'varchar', length: 100 })
-  categoria:RutinaCategoria[];
+  categoria: RutinaCategoria[];
 
   @OneToMany(() => Ejercicio, (ejercicio) => ejercicio.rutina)
   @JoinColumn({ name: 'ejercicios' })
@@ -39,4 +39,7 @@ export class Rutina {
   @OneToMany(() => Comentarios, (comentario) => comentario.rutina)
   @JoinColumn({ name: 'comentarios' })
   comentarios: Comentarios[];
+
+  @Column({ default: true })
+  active: boolean;
 }

@@ -19,6 +19,12 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
   export class Users {
     @PrimaryGeneratedColumn('uuid')
     id: string;
+  @Entity({
+    name: 'users',
+  })
+  export class Users {
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column({ type: 'varchar', length: 100, nullable: false })
     name: string;

@@ -1,8 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { Body, Controller, Post } from "@nestjs/common";
 import { loginDto } from "./Login.Dto";
 import { AuthService } from "./Auth.Sevice";
 import { CreateUserDto } from "src/User/CreateUser.Dto";
-import { CreateEntrenadorDto } from "src/User/CreateEntrenador.Dto";
 import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags('auth')

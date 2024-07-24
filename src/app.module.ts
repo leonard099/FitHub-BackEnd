@@ -8,6 +8,7 @@ import { RutinaModule } from './Rutina/Rutina.module';
 import { usersModule } from './User/User.module';
 import { AuthModule } from './Auth/Auth.module';
 import { JwtModule } from '@nestjs/jwt';
+import { FilesUploadModule } from './files-upload/files-upload.module';
 
 @Module({
   imports: [
@@ -24,10 +25,13 @@ import { JwtModule } from '@nestjs/jwt';
     }),
     JwtModule.register({
       global: true,
-      signOptions: { expiresIn:'1h'},
-      secret: process.env.JWT_SECRET
+      signOptions: { expiresIn: '1h' },
+      secret: process.env.JWT_SECRET,
     }),
-    RutinaModule, usersModule,AuthModule
+    RutinaModule,
+    usersModule,
+    AuthModule,
+    FilesUploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

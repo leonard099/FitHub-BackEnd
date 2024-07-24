@@ -65,6 +65,4 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
     @JoinColumn({ name: 'comentarios' })
     comentarios: Comentarios[];
 
-    @Column({ type: 'varchar', length: 100 })
-    conflicto: string;
   }

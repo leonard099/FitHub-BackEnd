@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { auth } from 'express-openid-connect';
+import { configAuth } from 'config/Auth0.congug';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,6 +15,7 @@ async function bootstrap() {
     .build();
   const documentacion = SwaggerModule.createDocument(app,documentConfig)
   SwaggerModule.setup('api',app,documentacion)
+  app.use(auth(configAuth))
   app.useGlobalPipes(new ValidationPipe({whitelist:true})); 
   await app.listen(3000);
 }

@@ -8,6 +8,8 @@ import { RutinaModule } from './Rutina/Rutina.module';
 import { usersModule } from './User/User.module';
 import { AuthModule } from './Auth/Auth.module';
 import { JwtModule } from '@nestjs/jwt';
+import { EjercicoModule } from './Ejercicios/Ejercicios.module';
+import { PlanModule } from './PlanDeEntranmiento/Plan.module';
 import { FilesUploadModule } from './files-upload/files-upload.module';
 
 @Module({
@@ -28,6 +30,7 @@ import { FilesUploadModule } from './files-upload/files-upload.module';
       signOptions: { expiresIn: '1h' },
       secret: process.env.JWT_SECRET,
     }),
+    RutinaModule, usersModule,AuthModule, EjercicoModule, PlanModule
     RutinaModule,
     usersModule,
     AuthModule,

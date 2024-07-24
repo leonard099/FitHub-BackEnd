@@ -65,4 +65,7 @@ import { Plan } from 'src/PlanDeEntranmiento/Plan.entity';
     @JoinColumn({ name: 'comentarios' })
     comentarios: Comentarios[];
 
+    @Column({ default: true })
+    active: boolean;
+    }
   }
